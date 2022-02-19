@@ -43,15 +43,15 @@ class IsItDown(commands.Cog):
 
         # log.debug(resp)
         if resp["isitdown"]:
-            await ctx.maybe_send_embed(f"{url} is DOWN!")
+            await ctx.maybe_send_embed(f"Komikcast is DOWN!")
         else:
-            await ctx.maybe_send_embed(f"{url} is UP!")
+            await ctx.maybe_send_embed(f"Komikcast is UP!")
 
     async def _check_if_down(self, url_to_check):
         re_compiled = re.compile(r"https?://(www\.)?")
         url = re_compiled.sub("", url_to_check).strip().strip("/")
 
-        url = f"{url}"
+        url = f"https://isitdown.site/api/v3/{url}"
         # log.debug(url)
         async with aiohttp.ClientSession() as session:
             async with session.get(url) as response:
