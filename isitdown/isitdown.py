@@ -51,7 +51,7 @@ class IsItDown(commands.Cog):
         re_compiled = re.compile(r"https?://(www\.)?")
         url = re_compiled.sub("", url_to_check).strip().strip("/")
 
-        url = f"https://isitdown.site/api/v3/{url}"
+        url = f"{url}"
         # log.debug(url)
         async with aiohttp.ClientSession() as session:
             async with session.get(url) as response:
